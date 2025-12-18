@@ -720,6 +720,12 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     padding-bottom: 50px;
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none;  /* IE / Edge */
+
+    /* Asegurar aceleración en iOS */
+    -webkit-overflow-scrolling: touch; 
+    
+    /* Añade scroll-behavior para suavizar si se usan enlaces internos */
+    scroll-behavior: smooth;
   }
 
   /* Ocultar barra de scroll en Chrome / Safari / Webkit */
@@ -728,9 +734,14 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   }
 
   /* Asegurar que las tarjetas se alineen rápido pero suave */
+
   .mobile-card {
+    /* Mantenemos el alineado al centro */
     scroll-snap-align: center;
-    scroll-snap-stop: always; /* Obliga a parar en cada producto (objeto a objeto) */
+    
+    /* Cambiamos 'always' (freno obligatorio) por 'normal' (inercia natural) */
+    scroll-snap-stop: normal; 
+    
     height: 80vh;
     display: flex;
     flex-direction: column;
@@ -738,8 +749,10 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     justify-content: center;
     position: relative;
     
-    /* Evita parpadeos en animación */
+    /* Optimizaciones gráficas para evitar tirones */
     transform: translateZ(0); 
+    will-change: transform; 
+    backface-visibility: hidden;
   }
 
   .mobile-card img {

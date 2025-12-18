@@ -51,28 +51,47 @@ function setupInfiniteCarousel() {
 }
 
 // --- 2. MOVIMIENTO (INTELIGENTE X / Y) ---
+// --- SUSTITUIR ESTA FUNCIÓN EN SCRIPT.JS ---
+
 function updateCarousel(animate = true) {
   if(!imageContainer) return;
   
+  // Seleccionamos todas las imágenes para controlar su transición interna
+  const allImages = imageContainer.querySelectorAll('img');
+
   if (animate) {
+    // MOVIMIENTO NORMAL
     const transitionStyle = `transform ${TRANSITION_MS}ms cubic-bezier(0.25, 1, 0.5, 1)`;
     imageContainer.style.transition = transitionStyle;
     infoContainer.style.transition = transitionStyle;
+    
+    // Reactivamos las transiciones de las imágenes (por si se quedaron apagadas)
+    allImages.forEach(img => img.style.transition = '');
+
   } else {
+    // TELETRANSPORTE (RESET SILENCIOSO)
     imageContainer.style.transition = 'none';
     infoContainer.style.transition = 'none';
-    // Forzar Reflow
-    void imageContainer.offsetWidth; 
-    void infoContainer.offsetWidth;
+    
+    // --- SOLUCIÓN DEL BOTE ---
+    // Apagamos la transición de las imágenes para que el cambio de tamaño (0.9 -> 1.2) sea instantáneo
+    allImages.forEach(img => img.style.transition = 'none');
   }
 
-  // Activar clases
+  // Activar clases (esto cambia el tamaño de la imagen)
   allImageItems.forEach((el, i) => el.classList.toggle('active', i === current));
   allInfoItems.forEach((el, i) => el.classList.toggle('active', i === current));
 
-  // Centrar (La magia ocurre aquí dentro)
+  // Centrar
   centerItem(imageViewport, imageContainer, allImageItems, current);
   centerItem(infoViewport, infoContainer, allInfoItems, current);
+  
+  // Forzar Reflow (necesario para aplicar los cambios sin transición inmediatamente)
+  if (!animate) {
+    void imageContainer.offsetWidth; 
+    void infoContainer.offsetWidth;
+    // Las imágenes ya cambiaron de tamaño instantáneamente gracias al transition='none'
+  }
 }
 
 function centerItem(viewport, container, items, index) {

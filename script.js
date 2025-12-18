@@ -1,4 +1,4 @@
-// script.js - Lógica Principal (Splash y Carrusel Infinito)
+// script.js - Carrusel Infinito (Soporte Vertical Móvil + Horizontal Desktop)
 
 // --- REFERENCIAS DOM ---
 const imageViewport = document.querySelector('.viewport.images');
@@ -17,11 +17,11 @@ let current = 0;
 let isTransitioning = false;
 let autoplay;
 const TRANSITION_MS = 600; 
-const CLONES_COUNT = 2; // Cantidad de clones a cada lado
+const CLONES_COUNT = 2; 
 
 // --- 1. SETUP INICIAL ---
 function setupInfiniteCarousel() {
-  if(!imageContainer) return; // Protección si no estamos en index
+  if(!imageContainer) return;
 
   imageContainer.innerHTML = '';
   infoContainer.innerHTML = '';
@@ -32,7 +32,7 @@ function setupInfiniteCarousel() {
   const startImageClones = originalImageItems.slice(0, CLONES_COUNT).map(el => el.cloneNode(true));
   const startInfoClones = originalInfoItems.slice(0, CLONES_COUNT).map(el => el.cloneNode(true));
 
-  // Insertar en orden: [ClonesFin] [Originales] [ClonesInicio]
+  // Insertar
   endImageClones.forEach(el => { el.classList.add('clone'); imageContainer.appendChild(el); });
   originalImageItems.forEach(el => imageContainer.appendChild(el));
   startImageClones.forEach(el => { el.classList.add('clone'); imageContainer.appendChild(el); });
@@ -50,7 +50,7 @@ function setupInfiniteCarousel() {
   updateCarousel(false);
 }
 
-// --- 2. MOVIMIENTO Y ANIMACIÓN ---
+// --- 2. MOVIMIENTO (INTELIGENTE X / Y) ---
 function updateCarousel(animate = true) {
   if(!imageContainer) return;
   
@@ -61,13 +61,16 @@ function updateCarousel(animate = true) {
   } else {
     imageContainer.style.transition = 'none';
     infoContainer.style.transition = 'none';
-    void imageContainer.offsetWidth; // Forzar Reflow
+    // Forzar Reflow
+    void imageContainer.offsetWidth; 
     void infoContainer.offsetWidth;
   }
 
+  // Activar clases
   allImageItems.forEach((el, i) => el.classList.toggle('active', i === current));
   allInfoItems.forEach((el, i) => el.classList.toggle('active', i === current));
 
+  // Centrar (La magia ocurre aquí dentro)
   centerItem(imageViewport, imageContainer, allImageItems, current);
   centerItem(infoViewport, infoContainer, allInfoItems, current);
 }
@@ -75,11 +78,30 @@ function updateCarousel(animate = true) {
 function centerItem(viewport, container, items, index) {
   const active = items[index];
   if (!active) return;
-  const viewportWidth = viewport.clientWidth;
-  const activeWidth = active.clientWidth;
-  const itemLeft = active.offsetLeft; 
-  const target = itemLeft - (viewportWidth / 2 - activeWidth / 2);
-  container.style.transform = `translateX(${-target}px)`;
+
+  // DETECTAR SI ES MÓVIL (Menos de 768px)
+  const isMobile = window.innerWidth <= 768;
+
+  if (isMobile) {
+    // --- LÓGICA VERTICAL (Móvil) ---
+    const viewportHeight = viewport.clientHeight;
+    const activeHeight = active.clientHeight;
+    const itemTop = active.offsetTop; 
+    
+    // Calcular centro vertical
+    const target = itemTop - (viewportHeight / 2 - activeHeight / 2);
+    container.style.transform = `translateY(${-target}px)`;
+
+  } else {
+    // --- LÓGICA HORIZONTAL (Desktop) ---
+    const viewportWidth = viewport.clientWidth;
+    const activeWidth = active.clientWidth;
+    const itemLeft = active.offsetLeft; 
+    
+    // Calcular centro horizontal
+    const target = itemLeft - (viewportWidth / 2 - activeWidth / 2);
+    container.style.transform = `translateX(${-target}px)`;
+  }
 }
 
 // --- 3. NAVEGACIÓN ---
@@ -189,6 +211,7 @@ function initAfterSplash() {
   setupInfiniteCarousel();
   setupNavButtons();
   setupAutoplay();
+  // Al cambiar tamaño de pantalla, recalculamos si es horizontal o vertical
   window.addEventListener('resize', () => { updateCarousel(false); });
 }
 

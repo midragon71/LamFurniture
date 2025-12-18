@@ -694,24 +694,52 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   .carrusel { display: none; } 
 
   /* Estilos para el nuevo contenedor generado por JS */
+/* --- 3. CARRUSEL MÓVIL (Versión Ultra Fluida) --- */
+  
+  /* Ocultamos el carrusel de escritorio */
+  .carrusel { display: none; } 
+
   #mobile-carousel-view {
     display: block;
     width: 100%;
-    height: calc(100vh - 280px); /* Resto de pantalla bajo el header */
-    overflow-y: scroll; /* Scroll vertical nativo */
-    scroll-snap-type: y mandatory; /* Magia táctil: se pega al elemento */
+    /* Ajuste de altura para que encaje perfecto */
+    height: calc(100vh - 250px); 
+    
+    /* --- 1. ACTIVAR INERCIA (Clave para iPhone/iPad) --- */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch; /* Magia: Scroll con inercia física */
+    
+    /* --- 2. SNAP "OBJETO A OBJETO" --- */
+    scroll-snap-type: y mandatory; 
+    
+    /* --- 3. MEJORAS DE RENDIMIENTO --- */
+    overscroll-behavior-y: contain; /* Evita que rebote toda la página web */
+    will-change: scroll-position;   /* Avisa al navegador para optimizar */
+    
+    /* --- 4. ESTÉTICA LIMPIA (Sin barras de scroll) --- */
     padding-bottom: 50px;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE / Edge */
   }
 
-  /* Cada tarjeta (Imagen + Info) */
+  /* Ocultar barra de scroll en Chrome / Safari / Webkit */
+  #mobile-carousel-view::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Asegurar que las tarjetas se alineen rápido pero suave */
   .mobile-card {
-    scroll-snap-align: center; /* Se centra automáticamente al soltar */
-    height: 80vh; /* Ocupa casi toda la pantalla */
+    scroll-snap-align: center;
+    scroll-snap-stop: always; /* Obliga a parar en cada producto (objeto a objeto) */
+    height: 80vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
+    
+    /* Evita parpadeos en animación */
+    transform: translateZ(0); 
   }
 
   .mobile-card img {
@@ -722,8 +750,6 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     margin-bottom: 30px; /* Espacio entre foto y texto */
   }
 
-  /* Fila de información (001 - Nombre - +) */
-/* ... dentro de @media (max-width: 480px) ... */
 
   /* Estilos específicos para el enlace "+" */
 /* ... dentro de @media (max-width: 480px) ... */

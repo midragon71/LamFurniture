@@ -51,7 +51,7 @@ function setupInfiniteCarousel() {
 }
 
 // --- 2. MOVIMIENTO (INTELIGENTE X / Y) ---
-// --- SUSTITUIR ESTA FUNCIÓN EN SCRIPT.JS ---
+
 
 function updateCarousel(animate = true) {
   if(!imageContainer) return;

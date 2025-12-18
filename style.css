@@ -4,7 +4,7 @@
 
 /* --- 1. Reset y Configuración Base --- */
 :root {
-  --font-main: 'Futura Bold';
+  --font-main: 'Futura PT Bold';
   --color-bg: #ffffff;
   --color-text: #111111;
   --color-accent: #CD2E37;     /* Rojo */

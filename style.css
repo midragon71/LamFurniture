@@ -84,9 +84,14 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 }
 
 .menu a {
-  font-family: var(--font-main);
-  font-weight: 500; font-size: 22px;
-  line-height: 34px; letter-spacing: -0.05em;
+  /* --- Tipografía Exacta del Diseño --- */
+  font-family: 'Futura', var(--font-main), sans-serif; /* Prioriza Futura si está instalada */
+  font-weight: 500;       /* Medium */
+  font-size: 22.69px;     /* Tamaño exacto */
+  line-height: 150%;      /* Espaciado vertical */
+  letter-spacing: -0.05em; /* Equivale a -5% */
+
+  /* --- Estilos del Botón --- */
   color: var(--color-inactive);
   text-decoration: none;
   border: 0.7px solid var(--color-inactive);
@@ -136,19 +141,46 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 /* Contenedor de Info */
 .viewport.info { margin-top: 40px; }
 .carrusel-container.info { display: flex; will-change: transform; }
+/* ... En la sección 4 de tu CSS ... */
+
 .carrusel-container.info .item {
   flex: 0 0 33.33%;
-  display: flex; justify-content: center; align-items: center;
-  gap: 12px; font-size: 16px; color: #333;
-}
-.carrusel-container.info .item .number { font-weight: bold; color: var(--color-accent); }
+  display: flex; 
+  justify-content: center; 
+  align-items: center;
+  gap: 12px;
+  
+  /* --- FUERZA UNA SOLA LÍNEA --- */
+  white-space: nowrap; 
 
-.carrusel-container.info .item .plus {
-  font-size: 20px; font-weight: bold; color: var(--color-accent);
-  text-decoration: none; display: inline-block;
-  transition: transform 0.3s ease;
+  /* --- TIPOGRAFÍA Y COLOR ROJO --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 700;
+  font-size: 13.75px;
+  line-height: 150%;
+  letter-spacing: -0.05em;
+  
+  /* CAMBIO: Todo rojo en lugar de #333 */
+  color: var(--color-accent);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
 }
-.carrusel-container.info .item .plus:hover { transform: scale(1.2); }
+
+/* Forzamos que los hijos (numero y link) usen el mismo color */
+.carrusel-container.info .item .number,
+.carrusel-container.info .item .plus {
+  color: inherit;       /* Hereda el rojo */
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+/* Opcional: Si el botón + tenía hover, que siga siendo rojo */
+.carrusel-container.info .item .plus:hover {
+  color: var(--color-accent);
+  transform: scale(1.2);
+}
 
 /* Flechas */
 .prev, .next {
@@ -179,10 +211,34 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   display: flex; justify-content: space-between; align-items: center;
   margin-bottom: 12px; font-size: 14px; color: var(--color-inactive); font-weight: 500;
 }
-.cat-num { width: 30px; }
+/* Igualar el número al mismo tamaño que el título */
+.cat-num {
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 500; /* O 700 si lo quieres negrita también */
+  font-size: 12px;
+  width: 30px;
+  line-height: 150%;
+  letter-spacing: -0.05em;
+}
 .cat-name {
-  font-size: 14px; font-weight: 700; margin: 0;
-  color: var(--color-inactive); flex-grow: 1; text-align: center;
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 700;        /* Bold */
+  font-size: 12px;         /* Tamaño exacto */
+  line-height: 150%;
+  letter-spacing: -0.05em; /* -5% */
+  text-align: center;
+
+  /* --- Layout y Color --- */
+  margin: 0;
+  flex-grow: 1;            /* Ocupa el espacio central */
+  color: var(--color-inactive); /* Gris por defecto */
+
+  /* --- NITIDEZ EXTRA (Importante para 12px) --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
 }
 .cat-plus {
   width: 20px; text-align: right; color: var(--color-inactive);
@@ -210,31 +266,99 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   padding: 0; text-align: left;
 }
 .index-toggle-btn {
-  background: none; border: none;
-  font-family: var(--font-main); font-size: 24px; color: var(--color-inactive);
-  padding: 0; margin: 0; text-align: center; display: inline-block;
-  transition: color 0.3s ease;
-}
-.index-toggle-btn:hover, .index-toggle-btn.active { color: var(--color-accent); }
+  /* Reset de botón */
+  background: none; 
+  border: none;
+  padding: 0; 
+  margin: 0; 
+  display: inline-block;
+  cursor: pointer;
 
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura', var(--font-main), sans-serif;
+  font-weight: 500;        /* Medium */
+  font-size: 22.69px;      /* Tamaño exacto */
+  line-height: 150%;
+  letter-spacing: -0.05em; /* -5% */
+  
+  color: var(--color-inactive);
+  transition: color 0.3s ease;
+
+  /* --- NITIDEZ (Anti-aliasing) --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+}
+
+/* Estado Hover y Activo (cuando está desplegado) */
+.index-toggle-btn:hover, 
+.index-toggle-btn.active { 
+  color: var(--color-accent); 
+}
 .index-list-view { width: 100%; margin-top: 20px; }
 .index-list-view ul { list-style: none; padding: 0; margin: 0; }
 
 .index-list-view li {
-  display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-  padding: 10px 0; border-bottom: 1px solid transparent;
-  font-size: 18px; color: var(--color-inactive);
-  transition: all 0.3s ease; cursor: pointer; position: relative;
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 700;        /* Bold */
+  font-size: 20.68px;      /* Tamaño exacto */
+  line-height: 150%;
+  letter-spacing: -0.05em; /* -5% */
+  text-align: center;
+  
+  /* --- Color Base (Gris) --- */
+  color: var(--color-inactive);
+
+  /* --- Layout Flex/Grid --- */
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: center;
+  padding: 10px 0; 
+  border-bottom: 1px solid transparent;
+  cursor: pointer; 
+  position: relative;
+  transition: all 0.3s ease;
+
+  /* --- NITIDEZ (Crucial para decimales y negrita) --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
 }
 
 .idx-header {
   display: grid; grid-template-columns: 60px 250px 40px;
   align-items: center; width: auto;
 }
-.idx-num { text-align: right; font-weight: 500; padding-right: 15px; }
-.idx-name { text-align: center; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.idx-plus { text-align: left; font-weight: 700; padding-left: 15px; transition: transform 0.3s ease; }
+/* Asegurar que el número también sea Bold y herede el tamaño */
+.idx-num { 
+  text-align: right; 
+  font-weight: 700; /* ANTES 500, AHORA 700 */
+  padding-right: 15px; 
+  font-size: inherit; /* Hereda 20.68px */
+}
 
+/* El nombre ya estaba centrado, aseguramos la negrita */
+.idx-name { 
+  text-align: center; 
+  font-weight: 700; 
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  font-size: inherit;
+}
+
+/* El símbolo + */
+.idx-plus { 
+  text-align: left; 
+  font-weight: 700; 
+  padding-left: 15px; 
+  transition: transform 0.3s ease;
+  font-size: inherit;
+}
 .index-list-view li:hover .idx-name,
 .index-list-view li:hover .idx-num,
 .index-list-view li:hover .idx-plus { color: var(--color-accent); }
@@ -262,18 +386,68 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 }
 .idx-img-box img { width: 100%; height: 100%; object-fit: contain; }
 
-.idx-info-box { text-align: left; font-family: var(--font-main); font-size: 18px; line-height: 1.4; }
-.idx-info-line { margin: 0; }
+.idx-info-box {
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura', var(--font-main), sans-serif;
+  font-weight: 400;        /* Regular */
+  font-size: 20px;         /* Tamaño exacto */
+  line-height: 124%;       /* Interlineado ajustado */
+  letter-spacing: -0.05em; /* -5% */
+  text-align: left;
+  
+  /* --- Espaciado interno (opcional para separar del borde) --- */
+  margin-bottom: 10px;
+
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+}
+
+/* Asegurar que las líneas individuales hereden todo esto */
+.idx-info-line {
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
 .text-black { color: #CD2E37; }
 .text-red { color: var(--color-accent); }
 
 .btn-shop-now {
-  display: inline-block; margin-top: 20px; padding: 8px 30px;
-  border: 1px solid var(--color-inactive); color: var(--color-inactive);
-  text-transform: uppercase; text-decoration: none; font-size: 16px; letter-spacing: 0.05em;
+  display: inline-block;
+  margin-top: 20px;
+  
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 400;        /* Book / Regular */
+  font-size: 20px;         /* Tamaño exacto */
+  line-height: 150%;       /* Interlineado */
+  letter-spacing: -0.05em; /* -5% */
+  
+  text-transform: uppercase; /* Mantenemos mayúsculas (habitual en botones) */
+  text-decoration: none;
+  
+  /* --- ESTILOS DEL BOTÓN (Borde y Color) --- */
+  padding: 8px 30px;
+  border: 1px solid var(--color-inactive);
+  color: var(--color-inactive);
   transition: all 0.3s ease;
+  background: transparent;
+
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.btn-shop-now:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+/* Efecto Hover */
+.btn-shop-now:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
 
 
 /* --- 7. Página de Producto Individual (product-pita.html, etc) --- */
@@ -283,16 +457,52 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   display: flex; flex-direction: column; justify-content: center;
   min-height: calc(100vh - 220px); position: relative;
 }
+/* Contenedor de la fila */
 .prod-header-row {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 20px; padding: 0 20px; font-weight: 700; font-size: 20px;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center;
+  margin-bottom: 20px; 
+  padding: 0 20px;
+  
+  /* Color rojo para todo el grupo */
+  color: var(--color-accent); 
 }
-.prod-number { color: var(--color-accent); }
-.prod-title { margin: 0; color: #CD2E37; font-size: 22px; letter-spacing: 0.05em; }
+
+/* Aplicar tipografía exacta a los 3 elementos por igual */
+.prod-number,
+.prod-title,
 .prod-plus-btn {
-  background: none; border: none; font-weight: 700; font-size: 26px;
-  color: var(--color-accent); padding: 0; line-height: 1; position: relative; z-index: 20;
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 700;        /* Bold */
+  font-size: 14.52px;      /* Tamaño exacto */
+  line-height: 150%;
+  letter-spacing: -0.05em; /* -5% */
+  text-align: center;
+  
+  /* Reset de estilos nativos */
+  margin: 0;
+  padding: 0;
+  background: none; 
+  border: none;
+  color: inherit; /* Heredan el rojo */
+  
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+}
+
+/* Ajuste específico para el botón + */
+.prod-plus-btn {
+  cursor: pointer;
   transition: transform 0.3s ease;
+}
+.prod-plus-btn.active {
+  transform: rotate(45deg);
+  /* Nota: Si quieres que siga siendo rojo al girar, borra la línea que cambiaba a negro en tu CSS original */
+  color: var(--color-accent); 
 }
 .prod-plus-btn.active { transform: rotate(45deg); color: #111; }
 
@@ -302,7 +512,20 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   transform: translateY(-10px); transition: all 0.4s ease; text-align: left; pointer-events: none;
 }
 .prod-info-overlay.active { opacity: 1; visibility: visible; transform: translateY(0); }
-.info-content p { font-size: 20px; line-height: 1.3; margin: 0 0 4px 0; letter-spacing: -0.02em; }
+.info-content p {
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura', var(--font-main), sans-serif;
+  font-weight: 400;        /* Regular (Weight 5 suele mapearse a 400 o 500) */
+  font-size: 20px;         /* Tamaño exacto */
+  line-height: 124%;
+  letter-spacing: -0.05em; /* -5% */
+  
+  margin: 0 0 4px 0; /* Espaciado entre líneas */
+  
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 .info-line-1 { color: #CD2E37; }
 .info-line-red { color: var(--color-accent); }
 
@@ -318,10 +541,34 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 
 .prod-color-selector { display: flex; justify-content: center; gap: 12px; margin-bottom: 30px; }
 .color-btn {
-  background: none; border: none; font-family: var(--font-main); font-size: 18px;
-  color: var(--color-inactive); padding: 0; line-height: 1; transition: all 0.2s ease;
+  background: none; 
+  border: none; 
+  padding: 0; 
+  line-height: 1; 
+  cursor: pointer;
+  
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Neue Haas Unica Pro', sans-serif; /* Nueva fuente */
+  font-weight: 400;        /* Regular */
+  font-size: 20px;         /* Tamaño exacto */
+  line-height: 124%;       /* Interlineado ajustado */
+  letter-spacing: -0.05em; /* -5% */
+  
+  color: var(--color-inactive); 
+  transition: all 0.2s ease;
+
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
+
+/* Estados */
 .color-btn:hover { color: #666; }
+.color-btn.active { 
+  font-weight: 400; /* Mantenemos Regular (o 700 si prefieres Bold al seleccionar) */
+  /* Los colores específicos se manejan en tu CSS original (active[data-color="yellow"] etc) */
+}
 .color-btn.active { font-weight: 700; transform: scale(1.05); }
 .color-btn.active[data-color="yellow"] { color: #FED068; }
 .color-btn.active[data-color="green"]  { color: #D0E041; }
@@ -330,12 +577,33 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 .color-btn.active[data-color="orange"] { color: #FF8000; }
 
 .btn-buy {
-  background: transparent; border: 1px solid var(--color-inactive);
-  font-family: var(--font-main); font-size: 18px; color: var(--color-inactive);
-  padding: 8px 50px; text-transform: uppercase; letter-spacing: 0.05em;
+  background: transparent; 
+  
+  /* --- TIPOGRAFÍA EXACTA --- */
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 400;        /* Book / Regular */
+  font-size: 20px;         /* Tamaño exacto */
+  line-height: 150%;
+  letter-spacing: -0.05em; /* -5% */
+  text-transform: uppercase;
+  text-align: center;
+  
+  /* Estilos de caja */
+  padding: 8px 50px; 
+  border: 1px solid var(--color-inactive);
+  color: var(--color-inactive);
+  cursor: pointer;
   transition: all 0.3s ease;
+  
+  /* --- NITIDEZ --- */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-.btn-buy:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+.btn-buy:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
 
 
 /* --- 8. Footer --- */
@@ -411,13 +679,15 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   }
 
   .menu a {
-    font-size: 18px;
-    padding: 8px 30px;
-    width: 160px; /* Ancho fijo para que se vean iguales */
-    text-align: center;
-    border-color: var(--color-inactive); /* Asegurar borde visible */
-    color: var(--color-inactive);
-  }
+      /* Usamos el mismo tamaño del diseño o lo heredamos */
+      font-size: 22.69px; /* Antes era 18px, ahora igualamos al diseño */
+      
+      padding: 8px 30px;
+      width: 180px; /* Un poco más ancho para que quepa el texto más grande */
+      text-align: center;
+      border-color: var(--color-inactive);
+      color: var(--color-inactive);
+    }
 
   /* --- 3. CARRUSEL MÓVIL NATIVO (Scroll Snap) --- */
   /* Ocultamos el carrusel de escritorio complejo */
@@ -456,30 +726,49 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 /* ... dentro de @media (max-width: 480px) ... */
 
   /* Estilos específicos para el enlace "+" */
-  .mobile-info-row .m-plus {
-    font-size: 24px;
-    cursor: pointer;
+/* ... dentro de @media (max-width: 480px) ... */
+
+  .mobile-info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 40px;
     
-    /* 1. Quitar el subrayado */
-    text-decoration: none !important;
-    border: none;
+    /* --- FUERZA UNA SOLA LÍNEA --- */
+    flex-wrap: nowrap;       /* Prohibido bajar de línea */
+    white-space: nowrap;     /* El texto no se partirá */
     
-    /* 2. Forzar color rojo (y evitar el azul estándar) */
+    /* --- TIPOGRAFÍA EXACTA --- */
+    font-family: 'Futura PT', var(--font-main), sans-serif;
+    font-weight: 700;
+    font-size: 13.75px;
+    line-height: 150%;
+    letter-spacing: -0.05em;
+    text-align: center;
+    
+    /* --- COLOR ROJO GLOBAL --- */
     color: var(--color-accent) !important; 
-    
-    /* Extra: Asegurar que el área táctil sea cómoda */
-    padding: 0 0 0 15px; 
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    transform: translateZ(0); /* Evita borrosidad por sub-píxeles */
+    backface-visibility: hidden; /* Evita parpadeos en iPhone */
   }
 
-  /* Asegurarnos de que no cambie a morado si ya lo visitaste */
-  .mobile-info-row .m-plus:visited,
-  .mobile-info-row .m-plus:hover,
-  .mobile-info-row .m-plus:active {
-    color: var(--color-accent) !important;
-    text-decoration: none !important;
+  /* Aseguramos que NADA cambie el color rojo */
+  .mobile-info-row .m-num, 
+  .mobile-info-row .m-name, 
+  .mobile-info-row .m-plus {
+    color: inherit !important; /* Heredan el rojo del padre */
+    text-decoration: none;     /* Sin subrayados */
   }
-  
-  .mobile-info-row .m-num { color: var(--color-accent); }
-  .mobile-info-row .m-name { color: var(--color-accent); text-transform: uppercase; }
-  .mobile-info-row .m-plus { font-size: 24px; cursor: pointer; }
+
+  /* Ajuste fino para el nombre si quieres que esté centrado visualmente */
+  .mobile-info-row .m-name {
+    flex-grow: 1; /* Ocupa el espacio central */
+    text-align: center;
+    padding: 0 5px; /* Un poco de aire lateral */
+  }
 }

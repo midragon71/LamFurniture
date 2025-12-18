@@ -359,8 +359,127 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   .prod-info-overlay { position: relative; top: 0; right: auto; width: 100%; text-align: center; margin-bottom: 20px; }
 }
 @media (max-width: 650px) {
-  .catalog-grid { grid-template-columns: 1fr; }
+  .catalog-grid { grid-template-columns: 1fr; gap: 40px }
+  /* Hacer los botones de "+" más grandes para dedos */
+  .cat-plus, .prod-plus-btn {
+    padding: 10px; /* Aumentar área táctil */
+    font-size: 24px;
+  }
   .idx-details-panel { grid-template-columns: 1fr; text-align: center; }
   .idx-info-box { text-align: center; }
   .idx-header { grid-template-columns: 40px 1fr 30px; width: 100%; }
+}
+
+/* =========================================
+   OPTIMIZACIÓN MÓVIL (Max 480px)
+   ========================================= */
+@media (max-width: 480px) {
+  
+  /* --- 1. REINICIO DE LAYOUT (Mostrar/Ocultar) --- */
+  .desktop-only { display: none !important; }
+  .mobile-only { display: block !important; }
+
+  /* --- 2. HEADER VERTICAL (Sin superposición) --- */
+  .header {
+    height: auto; /* Altura automática para crecer según contenido */
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 30px;
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .logo {
+    position: static; /* Quitamos absolute para que ocupe espacio real */
+    transform: none;
+    margin-bottom: 25px;
+  }
+  .logo img { width: 140px; }
+
+  /* MENÚ: Vertical y estilo botones */
+  .menu {
+    position: static; /* Quitamos absolute */
+    transform: none;
+    display: flex;
+    flex-direction: column; /* Lista vertical */
+    gap: 15px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .menu a {
+    font-size: 18px;
+    padding: 8px 30px;
+    width: 160px; /* Ancho fijo para que se vean iguales */
+    text-align: center;
+    border-color: var(--color-inactive); /* Asegurar borde visible */
+    color: var(--color-inactive);
+  }
+
+  /* --- 3. CARRUSEL MÓVIL NATIVO (Scroll Snap) --- */
+  /* Ocultamos el carrusel de escritorio complejo */
+  .carrusel { display: none; } 
+
+  /* Estilos para el nuevo contenedor generado por JS */
+  #mobile-carousel-view {
+    display: block;
+    width: 100%;
+    height: calc(100vh - 280px); /* Resto de pantalla bajo el header */
+    overflow-y: scroll; /* Scroll vertical nativo */
+    scroll-snap-type: y mandatory; /* Magia táctil: se pega al elemento */
+    padding-bottom: 50px;
+  }
+
+  /* Cada tarjeta (Imagen + Info) */
+  .mobile-card {
+    scroll-snap-align: center; /* Se centra automáticamente al soltar */
+    height: 80vh; /* Ocupa casi toda la pantalla */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .mobile-card img {
+    max-height: 50vh;
+    width: auto;
+    max-width: 90%;
+    object-fit: contain;
+    margin-bottom: 30px; /* Espacio entre foto y texto */
+  }
+
+  /* Fila de información (001 - Nombre - +) */
+/* ... dentro de @media (max-width: 480px) ... */
+
+  /* Estilos específicos para el enlace "+" */
+  .mobile-info-row .m-plus {
+    font-size: 24px;
+    cursor: pointer;
+    
+    /* 1. Quitar el subrayado */
+    text-decoration: none !important;
+    border: none;
+    
+    /* 2. Forzar color rojo (y evitar el azul estándar) */
+    color: var(--color-accent) !important; 
+    
+    /* Extra: Asegurar que el área táctil sea cómoda */
+    padding: 0 0 0 15px; 
+  }
+
+  /* Asegurarnos de que no cambie a morado si ya lo visitaste */
+  .mobile-info-row .m-plus:visited,
+  .mobile-info-row .m-plus:hover,
+  .mobile-info-row .m-plus:active {
+    color: var(--color-accent) !important;
+    text-decoration: none !important;
+  }
+  
+  .mobile-info-row .m-num { color: var(--color-accent); }
+  .mobile-info-row .m-name { color: var(--color-accent); text-transform: uppercase; }
+  .mobile-info-row .m-plus { font-size: 24px; cursor: pointer; }
 }

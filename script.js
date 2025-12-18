@@ -80,7 +80,7 @@ function centerItem(viewport, container, items, index) {
   if (!active) return;
 
   // DETECTAR SI ES MÓVIL (Menos de 768px)
-  const isMobile = window.innerWidth <= 768;
+  const isMobile = window.innerWidth <= 480;
 
   if (isMobile) {
     // --- LÓGICA VERTICAL (Móvil) ---
@@ -208,13 +208,75 @@ function runSplashSequenceOnce() {
 function initAfterSplash() {
   document.documentElement.style.overflow = '';
   document.body.style.overflow = '';
-  setupInfiniteCarousel();
-  setupNavButtons();
-  setupAutoplay();
-  // Al cambiar tamaño de pantalla, recalculamos si es horizontal o vertical
-  window.addEventListener('resize', () => { updateCarousel(false); });
+  
+  if (window.innerWidth <= 480) {
+    // MODO MÓVIL: Creamos la vista vertical táctil
+    createMobileLayout();
+    // Opcional: Detener autoplay del escritorio para ahorrar recursos
+    stopAutoplay();
+  } else {
+    // MODO ESCRITORIO: Tu lógica original
+    setupInfiniteCarousel();
+    setupNavButtons();
+    setupAutoplay();
+  }
+  
+  window.addEventListener('resize', () => { 
+    // Recargar si cambiamos drásticamente de tamaño (opcional)
+    if(window.innerWidth > 480 && document.getElementById('mobile-carousel-view')) {
+      location.reload(); 
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   runSplashSequenceOnce();
 });
+/* --- AÑADIR AL FINAL DE SCRIPT.JS --- */
+
+// Función para generar la vista móvil fusionada
+function createMobileLayout() {
+  // Solo ejecutar si es móvil y si no existe ya
+  if (window.innerWidth > 480) return;
+  if (document.getElementById('mobile-carousel-view')) return;
+
+  // 1. Buscar los elementos originales (limpios, sin clones)
+  // Usamos los selectores originales de tu HTML
+  const rawImages = document.querySelectorAll('.viewport.images .carrusel-container.images .item:not(.clone) img');
+  const rawInfos = document.querySelectorAll('.viewport.info .carrusel-container.info .item:not(.clone)');
+
+  // 2. Crear el contenedor nuevo
+  const mobileContainer = document.createElement('div');
+  mobileContainer.id = 'mobile-carousel-view';
+  
+  // 3. Fusionar Imagen + Info en tarjetas
+  rawImages.forEach((img, index) => {
+    const infoItem = rawInfos[index];
+    if(!infoItem) return;
+
+    // Extraer datos del texto
+    const num = infoItem.querySelector('.number').innerText;
+    const name = infoItem.querySelector('.name').innerText;
+    // Nota: El link del "+" original
+    const link = infoItem.querySelector('.plus').getAttribute('href');
+
+    // Crear la tarjeta HTML
+    const card = document.createElement('div');
+    card.className = 'mobile-card';
+    card.innerHTML = `
+      <a href="${link}">
+        <img src="${img.getAttribute('src')}" alt="${name}">
+      </a>
+      <div class="mobile-info-row">
+        <span class="m-num">${num}</span>
+        <span class="m-name">${name}</span>
+        <a href="${link}" class="m-plus">+</a>
+      </div>
+    `;
+    
+    mobileContainer.appendChild(card);
+  });
+
+  // 4. Insertar en el DOM (dentro del main, ocultando el carrusel original via CSS)
+  const main = document.querySelector('main');
+  main.appendChild(mobileContainer);}

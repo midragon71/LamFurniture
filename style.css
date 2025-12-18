@@ -772,3 +772,94 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     padding: 0 5px; /* Un poco de aire lateral */
   }
 }
+
+
+
+
+
+/* =========================================
+   PÁGINA EN CONSTRUCCIÓN
+   ========================================= */
+
+/* 1. Configuración del cuerpo para centrado vertical */
+.construction-page {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; /* Evita scroll innecesario */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centra verticalmente */
+  align-items: center;     /* Centra horizontalmente */
+  background: var(--color-bg);
+}
+
+/* 2. Contenedor central (Logo + Texto) */
+.construction-container {
+  flex-grow: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.construction-center {
+  text-align: center;
+  margin-top: -60px; /* Pequeño ajuste visual para compensar el footer */
+}
+
+/* 3. Estilo del Logo */
+.const-logo-link img {
+  width: 220px; /* Tamaño similar a tu imagen de referencia */
+  height: auto;
+  display: block;
+  margin: 0 auto 20px; /* Centrado y margen abajo */
+  transition: transform 0.3s ease;
+}
+
+.const-logo-link:hover img {
+  transform: scale(1.05); /* Pequeño efecto al pasar el ratón */
+}
+
+/* 4. Tipografía del texto "Página en construcción..." */
+.const-title {
+  font-family: 'Futura PT', var(--font-main), sans-serif;
+  font-weight: 700;        /* Bold */
+  font-size: 20px;         /* Tamaño legible */
+  line-height: 124%;
+  letter-spacing: -0.05em;
+  color: var(--color-inactive); /* Usamos tu gris azulado (#C0C5D8) */
+  margin: 0;
+  
+  /* Nitidez */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transform: translateZ(0);
+}
+
+/* 5. Ajuste del Footer (Para centrar el email) */
+.site-footer.construction-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-bottom: 40px; /* Más espacio abajo como en la referencia */
+}
+
+.footer-inner.centered {
+  justify-content: center; /* Forzar centrado del email */
+}
+
+/* Estilo del email específico para esta página (si quieres cambiar el color) */
+.construction-footer .footer-email {
+  color: var(--color-inactive); /* Gris igual que el texto */
+  font-family: 'Futura', var(--font-main), sans-serif;
+  font-size: 14px;
+}
+.construction-footer .footer-email:hover {
+  color: var(--color-accent);
+}
+
+/* --- Ajuste Móvil --- */
+@media (max-width: 480px) {
+  .const-logo-link img { width: 160px; }
+  .const-title { font-size: 16px; }
+}

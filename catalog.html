@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LAM Furniture | Catalog</title>
   <link rel="icon" type="image/svg+xml" href="assets/logoFurniture.svg" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.min.css" />
 </head>
 <body>
 
@@ -55,14 +55,14 @@
           <div class="cat-frame"><img src="assets/EYELAMP 4.svg" alt="Eye Lamp"></div>
         </article>
         
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">004</span><h2 class="cat-name">Reloj NTTW</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/relojNTTW-RED 3.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">005</span><h2 class="cat-name">Carlota Bench</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/carlota-bench 3.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">006</span><h2 class="cat-name">Florero</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/florero L2_02.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">007</span><h2 class="cat-name">Carlota 2</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/carlota2.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">008</span><h2 class="cat-name">Cenicero Jaime</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/cenicerojaime 4.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">009</span><h2 class="cat-name">Parada</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/PARADA SOLICITADA XIMI.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">010</span><h2 class="cat-name">Zapatero LAM</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/zapatero-lam 4.svg" alt=""></div></article>
-        <article class="cat-card"><div class="cat-head"><span class="cat-num">011</span><h2 class="cat-name">Aparador EDU</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/APARADOR-EDU 4.svg" alt=""></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">004</span><h2 class="cat-name">Reloj NTTW</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/relojNTTW-RED 3.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">005</span><h2 class="cat-name">Carlota Bench</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/carlota-bench 3.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">006</span><h2 class="cat-name">Florero</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/florero L2_02.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">007</span><h2 class="cat-name">Carlota 2</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/carlota2.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">008</span><h2 class="cat-name">Cenicero Jaime</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/cenicerojaime 4.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">009</span><h2 class="cat-name">Parada</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/PARADA SOLICITADA XIMI.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">010</span><h2 class="cat-name">Zapatero LAM</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/zapatero-lam 4.svg" alt="" loading="lazy"></div></article>
+        <article class="cat-card"><div class="cat-head"><span class="cat-num">011</span><h2 class="cat-name">Aparador EDU</h2><span class="cat-plus">+</span></div><div class="cat-frame"><img src="assets/APARADOR-EDU 4.svg" alt="" loading="lazy"></div></article>
       </div>
 
       <div class="index-list-view" style="display: none;">
@@ -169,7 +169,7 @@
                 else textHtml += `<p class="idx-info-line ${line.class}">${line.text}</p>`;
               });
               panel.innerHTML = `
-                <div class="idx-img-box"><img src="${data.img}" alt="Producto"></div>
+                <div class="idx-img-box"><img src="${data.img}" alt="Producto" loading="lazy"></div>
                 <div class="idx-info-box">${textHtml}<a href="${data.link}" class="btn-shop-now">SHOP NOW</a></div>
               `;
             }

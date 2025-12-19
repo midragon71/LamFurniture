@@ -904,3 +904,19 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   .const-logo-link img { width: 160px; }
   .const-title { font-size: 16px; }
 }
+/* --- ARREGLO DEL SALTO DE CARGA (Versión Suave) --- */
+
+/* 1. Estado inicial: Invisible */
+.carrusel-container.images,
+.carrusel-container.info {
+  opacity: 0; 
+  /* CAMBIO AQUÍ: 1.5s de duración y 'ease-out' para un final sedoso */
+  transition: opacity 2.5s ease-out; 
+  will-change: opacity; /* Optimización para el navegador */
+}
+
+/* 2. Estado listo: Visible */
+.carrusel-container.images.ready,
+.carrusel-container.info.ready {
+  opacity: 1;
+}

@@ -48,6 +48,13 @@ function setupInfiniteCarousel() {
   // Posición inicial
   current = CLONES_COUNT;
   updateCarousel(false);
+  // 2. SOLUCIÓN DEL SALTO:
+  // Damos un pequeño respiro (50ms) para asegurar que el navegador 
+  // ha aplicado el 'transform' y luego mostramos el carrusel.
+  setTimeout(() => {
+    imageContainer.classList.add('ready');
+    infoContainer.classList.add('ready');
+  }, 50);
 }
 
 // --- 2. MOVIMIENTO (INTELIGENTE X / Y) ---
@@ -235,9 +242,11 @@ function initAfterSplash() {
     stopAutoplay();
   } else {
     // MODO ESCRITORIO: Tu lógica original
-    setupInfiniteCarousel();
-    setupNavButtons();
-    setupAutoplay();
+      requestAnimationFrame(() => {
+        setupInfiniteCarousel();
+        setupNavButtons();
+        setupAutoplay();
+    });
   }
   
   window.addEventListener('resize', () => { 

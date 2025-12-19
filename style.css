@@ -575,6 +575,8 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
 .color-btn.active[data-color="fume"]   { color: #B48E90; }
 .color-btn.active[data-color="blue"]   { color: #71B6E0; }
 .color-btn.active[data-color="orange"] { color: #FF8000; }
+.color-btn.active[data-color="white"] { color: #C3C3C3; }
+.color-btn.active[data-color="red"] { color: #CD2E37; }
 
 .btn-buy {
   background: transparent; 

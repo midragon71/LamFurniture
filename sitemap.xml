@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <url>
+    <loc>https://lamfurniture.es/</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+  
+  <url>
+    <loc>https://lamfurniture.es/index.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.00</priority>
+  </url>
+
+  <url>
+    <loc>https://lamfurniture.es/catalog.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://lamfurniture.es/product_pita.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://lamfurniture.es/product-pita-xl.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <url>
+    <loc>https://lamfurniture.es/designers.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+  <url>
+    <loc>https://lamfurniture.es/contact.html</loc>
+    <lastmod>2024-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.50</priority>
+  </url>
+
+</urlset>

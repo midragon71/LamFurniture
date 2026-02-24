@@ -27,12 +27,12 @@ body {
 
   /* CURSOR PERSONALIZADO (Engranaje) */
   /* '16 16' es el centro de la imagen de 32px */
-  cursor: url('assets/cursor-engranaje.png') 16 16, auto;
+  cursor: url('assets/manita.webp') 8 8, auto;
 }
 
 /* Forzar cursor en elementos interactivos */
 a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx-header {
-  cursor: url('assets/cursor-engranaje.png') 16 16, pointer;
+  cursor: url('assets/manita.webp') 8 8, pointer;
 }
 
 /* --- 2. Splash Screen (Animación Entrada) --- */
@@ -669,26 +669,31 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   }
   .logo img { width: 140px; }
 
-  /* MENÚ: Vertical y estilo botones */
+  /* MENÚ: Horizontal y más estrecho en móvil */
   .menu {
     position: static; /* Quitamos absolute */
     transform: none;
     display: flex;
-    flex-direction: column; /* Lista vertical */
-    gap: 15px;
+    flex-direction: row; /* Lista horizontal */
+    gap: 8px;
     width: 100%;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .menu a {
       /* Usamos el mismo tamaño del diseño o lo heredamos */
-      font-size: 22.69px; /* Antes era 18px, ahora igualamos al diseño */
+      font-size: 14px; /* Reducido para móvil */
       
-      padding: 8px 30px;
-      width: 180px; /* Un poco más ancho para que quepa el texto más grande */
+      padding: 6px 12px;
+      width: auto; /* Ancho automático según contenido */
       text-align: center;
       border-color: var(--color-inactive);
       color: var(--color-inactive);
+      flex: 1;
+      min-width: 60px;
+      max-width: 100px;
     }
 
   /* --- 3. CARRUSEL MÓVIL NATIVO (Scroll Snap) --- */

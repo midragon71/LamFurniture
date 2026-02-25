@@ -712,6 +712,7 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     width: 100%;
     /* Ajuste de altura para que encaje perfecto */
     height: calc(100vh - 250px); 
+    margin-top: -80px;
     
     /* --- 1. ACTIVAR INERCIA (Clave para iPhone/iPad) --- */
     overflow-y: auto;
@@ -725,7 +726,7 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     will-change: scroll-position;   /* Avisa al navegador para optimizar */
     
     /* --- 4. ESTÉTICA LIMPIA (Sin barras de scroll) --- */
-    padding-bottom: 50px;
+    padding-bottom: 20px;
     scrollbar-width: none;  /* Firefox */
     -ms-overflow-style: none;  /* IE / Edge */
 
@@ -750,11 +751,13 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     /* Sin paradas de snap */
     scroll-snap-stop: none; 
     
-    height: 80vh;
+    height: auto;
+    min-height: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 20px 0;
     position: relative;
     
     /* Optimizaciones gráficas para evitar tirones */
@@ -768,7 +771,7 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     width: auto;
     max-width: 90%;
     object-fit: contain;
-    margin-bottom: 30px; /* Espacio entre foto y texto */
+    margin-bottom: 10px; /* Espacio entre foto y texto */
   }
 
 

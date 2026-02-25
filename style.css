@@ -717,8 +717,8 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     overflow-y: auto;
     -webkit-overflow-scrolling: touch; /* Magia: Scroll con inercia física */
     
-    /* --- 2. SNAP "OBJETO A OBJETO" --- */
-    scroll-snap-type: y mandatory; 
+    /* --- 2. SCROLL CONTINUO SIN PAUSAS --- */
+    scroll-snap-type: none; 
     
     /* --- 3. MEJORAS DE RENDIMIENTO --- */
     overscroll-behavior-y: contain; /* Evita que rebote toda la página web */
@@ -744,11 +744,11 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   /* Asegurar que las tarjetas se alineen rápido pero suave */
 
   .mobile-card {
-    /* Mantenemos el alineado al centro */
-    scroll-snap-align: center;
+    /* Sin alineación de snap */
+    scroll-snap-align: none;
     
-    /* Cambiamos 'always' (freno obligatorio) por 'normal' (inercia natural) */
-    scroll-snap-stop: normal; 
+    /* Sin paradas de snap */
+    scroll-snap-stop: none; 
     
     height: 80vh;
     display: flex;

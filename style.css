@@ -618,6 +618,7 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
   display: flex; justify-content: flex-start; pointer-events: auto;
 }
 .footer-email {
+  font-family: 'Futura', var(--font-main), sans-serif;
   font-size: 16px; color: var(--color-text); font-weight: 500;
   text-decoration: none; transition: color 0.2s;
 }
@@ -659,7 +660,7 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     justify-content: flex-start;
     padding-top: 30px;
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 0;
   }
 
   .logo {

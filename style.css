@@ -821,6 +821,53 @@ a, button, .plus, .color-btn, .prod-plus-btn, .index-toggle-btn, .cat-plus, .idx
     text-align: center;
     padding: 0 5px; /* Un poco de aire lateral */
   }
+
+  /* --- ÁREA DE CATÁLOGO Y PRODUCTOS --- */
+  .catalog-wrapper {
+    padding: 0 20px 50px;
+    margin-top: -30px;
+  }
+
+  .catalog-top-bar {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+
+  /* --- ÁREA DE PÁGINAS DE PRODUCTO --- */
+  .product-detail-container {
+    padding: 0 20px 40px;
+    margin-top: -30px;
+    min-height: auto;
+  }
+
+  .prod-header-row {
+    margin-bottom: 15px;
+    margin-top: 0;
+  }
+
+  .prod-image-wrapper {
+    height: 30vh;
+    margin-bottom: 5px;
+  }
+
+  .prod-color-selector {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .color-btn {
+    font-size: 14px;
+    line-height: 124%;
+  }
+
+  .btn-buy {
+    font-size: 14px;
+    padding: 6px 30px;
+  }
+
+  .footer-email {
+    font-size: 12px;
+  }
 }
 
 
